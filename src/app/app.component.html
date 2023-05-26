@@ -1,9 +1,31 @@
 <h1>List de Pokémons</h1>
-<p>Ceci est un paragraph</p>  
-<p>Ceci est un paragraph</p>
-<p>Ceci est un paragraph</p>
-<p>Ceci est un paragraph</p>
-<p>Ceci est un paragraph</p>  
-<p>Ceci est un paragraph</p>
-<p>Ceci est un paragraph</p>
-<p>Ceci est un paragraph</p>
+<style>
+    table,
+    th,
+    td {
+        margin: auto;
+        width: 50%;
+        border: 1px solid red;
+        padding: 10px;
+    }
+</style>
+<table *ngFor="let element of pokemonList" style="width:100%">
+    <thead>
+        <tr>
+            <th>Pokemon Id</th>
+            <th>Pokemon name</th>
+            <th>Pokemon hp</th>
+            <th>Pokemon cp</th>
+            <th>Pokemon birthday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{element.id}}</td>
+            <td>{{element.name}}</td>
+            <td>{{element.hp}}</td>
+            <td>{{element.cp}}</td>
+            <td>{{element.created}}</td>
+        </tr>
+    </tbody>
+</table>
