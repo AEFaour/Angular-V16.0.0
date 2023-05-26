@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {POKEMONS} from './mock-pokemons-list';
+import { POKEMONS } from './mock-pokemons-list';
 import { Pokemon } from './pokemon';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>List de Pokémons</h1>`,
+  templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-  pokemonList= POKEMONS;
+  pokemonList: Array<Pokemon> = POKEMONS;
 
 
   ngOnInit(): void {
@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
     this.selectPokemon(this.pokemonList[3]);
   }
 
-  selectPokemon(pokemon: Pokemon){
+  selectPokemon(pokemon: Pokemon) {
     console.log(`Vous avez cliqué sur le pokémon ${pokemon.name}`);
   }
-  
+
 }
