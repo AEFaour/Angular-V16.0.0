@@ -9,7 +9,7 @@
         padding: 10px;
     }
 </style>
-<table *ngFor="let element of pokemonList" style="width:100%">
+<table *ngFor="let pokemon of pokemonList" style="width:100%">
     <thead>
         <tr>
             <th>Pokemon Id</th>
@@ -21,11 +21,11 @@
     </thead>
     <tbody>
         <tr>
-            <td>{{element.id}}</td>
-            <td>{{element.name}}</td>
-            <td>{{element.hp}}</td>
-            <td>{{element.cp}}</td>
-            <td>{{element.created}}</td>
+            <td>{{pokemon.id}}</td>
+            <td (click)="selectPokemon(pokemon)">{{pokemon.name}}</td>
+            <td>{{pokemon.hp}}</td>
+            <td>{{pokemon.cp}}</td>
+            <td>{{pokemon.created}}</td>
         </tr>
     </tbody>
 </table>
