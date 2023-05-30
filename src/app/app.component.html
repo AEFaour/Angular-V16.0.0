@@ -14,6 +14,8 @@
     }
 </style>
 <input type="text" (click)="selectPokemonById($event)">
+<input type="text" (keyup)="0" #input >
+<p>{{input.value}}</p>
 <table *ngFor="let pokemon of pokemonList" style="width:100%">
     <thead>
         <tr>
