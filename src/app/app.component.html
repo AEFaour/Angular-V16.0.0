@@ -8,7 +8,12 @@
         border: 1px solid red;
         padding: 10px;
     }
+
+    input {
+        width: 100%;
+    }
 </style>
+<input type="text" (click)="selectPokemonById($event)">
 <table *ngFor="let pokemon of pokemonList" style="width:100%">
     <thead>
         <tr>
