@@ -1,38 +1,42 @@
 <h1>List de Pokémons</h1>
 <style>
-    table,
-    th,
-    td {
-        margin: auto;
-        width: 50%;
-        border: 1px solid red;
-        padding: 10px;
+    section {
+        border: 0.2rem solid red;
+        padding: 1rem;
     }
 
     input {
-        width: 100%;
+        margin: auto;
+        width: 75%;
+        border: 0.15rem solid red;
+        padding: 1rem;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 0.5rem;
+    }
+
+    .grid-item {
+        border: 0.1rem solid red;
+        padding: 1rem;
+        text-align: center;
     }
 </style>
-<input type="text" (click)="selectPokemonById($event)">
-<input type="text" (keyup)="0" #input >
-<p>{{input.value}}</p>
-<table *ngFor="let pokemon of pokemonList" style="width:100%">
-    <thead>
-        <tr>
-            <th>Pokemon Id</th>
-            <th>Pokemon name</th>
-            <th>Pokemon hp</th>
-            <th>Pokemon cp</th>
-            <th>Pokemon birthday</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{pokemon.id}}</td>
-            <td (click)="selectPokemon(pokemon)">{{pokemon.name}}</td>
-            <td>{{pokemon.hp}}</td>
-            <td>{{pokemon.cp}}</td>
-            <td>{{pokemon.created}}</td>
-        </tr>
-    </tbody>
-</table>
+<section>
+    <input type="number" #input (keyup.enter)="selectPokemonFromInput(input.value)" min="0" max="12">
+    <p>{{pokemonList[+input.value].name}}</p>
+    <p *ngIf="selectedPokemon" >Vous avez selectionné le Pokémon {{selectedPokemon.name}}</p>
+    <p *ngIf="!selectedPokemon" >Aucun pokémon a été trouvé</p>
+</section>
+<section>
+    <input type="text" (click)="selectPokemonById($event)">
+    <div class="grid-container">
+        <div *ngFor="let pokemon of pokemonList" class="grid-item">
+            <img src={{pokemon.picture}} alt="">
+            <h1 (click)="selectPokemon(pokemon)">Pokémon - {{pokemon.id}} - : {{pokemon.name}}</h1>
+            <p>{{pokemon.hp}} - {{pokemon.cp}} - {{pokemon.created}}</p>
+        </div>
+    </div>
+</section>
