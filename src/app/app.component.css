@@ -1,0 +1,11 @@
+section {
+    border: 0.2rem solid red;
+    padding: 1rem;
+}
+
+input {
+    margin: auto;
+    width: 75%;
+    border: 0.15rem solid red;
+    padding: 1rem;
+}

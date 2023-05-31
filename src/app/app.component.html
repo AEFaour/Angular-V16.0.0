@@ -1,42 +1,18 @@
-<h1>List de Pokémons</h1>
-<style>
-    section {
-        border: 0.2rem solid red;
-        padding: 1rem;
-    }
-
-    input {
-        margin: auto;
-        width: 75%;
-        border: 0.15rem solid red;
-        padding: 1rem;
-    }
-
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        padding: 0.5rem;
-    }
-
-    .grid-item {
-        border: 0.1rem solid red;
-        padding: 1rem;
-        text-align: center;
-    }
-</style>
-<section>
-    <input type="number" #input (keyup.enter)="selectPokemonFromInput(input.value)" min="0" max="12">
-    <p>{{pokemonList[+input.value].name}}</p>
-    <p *ngIf="selectedPokemon" >Vous avez selectionné le Pokémon {{selectedPokemon.name}}</p>
-    <p *ngIf="!selectedPokemon" >Aucun pokémon a été trouvé</p>
-</section>
-<section>
-    <input type="text" (click)="selectPokemonById($event)">
-    <div class="grid-container">
-        <div *ngFor="let pokemon of pokemonList" class="grid-item">
-            <img src={{pokemon.picture}} alt="">
-            <h1 (click)="selectPokemon(pokemon)">Pokémon - {{pokemon.id}} - : {{pokemon.name}}</h1>
-            <p>{{pokemon.hp}} - {{pokemon.cp}} - {{pokemon.created}}</p>
+<h1 class="center">List de Pokémons</h1>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let pokemon of pokemonList" class="col s6 m4">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img [src]="pokemon.picture">
+                </div>
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p (click)="selectPokemon(pokemon)">{{pokemon.name}}</p>
+                    <p>{{pokemon.created}}</p>
+                </div>
+            </div>
         </div>
     </div>
-</section>
+</div>
