@@ -1,16 +1,16 @@
 <h1 class="center">List de Pokémons</h1>
 <div class="container">
     <div class="row">
-        <div *ngFor="let pokemon of pokemonList" class="col s6 m4">
-            <div class="card horizontal">
+        <div *ngFor="let pokemon of pokemonList" class="col s6 m4"  >
+            <div class="card horizontal" (click)="selectPokemon(pokemon)" pokemonBorderCard >
                 <div class="card-image">
                     <img [src]="pokemon.picture">
                 </div>
-            </div>
-            <div class="card-stacked">
-                <div class="card-content">
-                    <p (click)="selectPokemon(pokemon)">{{pokemon.name}}</p>
-                    <p>{{pokemon.created}}</p>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{pokemon.name}}</p>
+                        <p><small>{{pokemon.created}}</small></p>
+                    </div>
                 </div>
             </div>
         </div>
