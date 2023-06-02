@@ -1,4 +1,5 @@
 export interface Pokemon {
+    [x: string]: any;
     id:number;
     hp: number;
     cp:number;
