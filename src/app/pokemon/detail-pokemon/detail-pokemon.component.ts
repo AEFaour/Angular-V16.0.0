@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { PokemonService } from '../pokemon.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detail-pokemon',
@@ -18,12 +19,15 @@ export class DetailPokemonComponent {
   ngOnInit(): void {
     const pokemonId: string | null = this.activateRoute.snapshot.paramMap.get('id');
     if (pokemonId) {
-      this.pokemon = this.pokemonService.getPokemonById(+pokemonId);
+      this.pokemonService.getPokemonById(+pokemonId).subscribe(pokemon => this.pokemon = pokemon);
     }
   }
+  
+  deletePokemon(pokemon : Pokemon){
+    this.pokemonService.deletePokemonById(pokemon.id).subscribe(() => this.goToPokementList())
+  }
   goToPokementList() {
-    this.router.navigate(['pokemons']);
-
+    this.router.navigate(['/pokemons']);
   }
 
   goTeEditPokemon(pokemon : Pokemon) {

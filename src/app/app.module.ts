@@ -26,7 +26,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     AppRoutingModule
     
   ],
-  providers: [InMemoryDataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

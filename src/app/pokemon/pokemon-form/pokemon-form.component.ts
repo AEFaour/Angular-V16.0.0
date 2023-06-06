@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from '../pokemon';
 import { PokemonService } from '../pokemon.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-form',
@@ -15,7 +16,7 @@ export class PokemonFormComponent {
   constructor(private router: Router, private pokemonService: PokemonService) { }
 
   ngOnInit() {
-    this.pokemonList = this.pokemonService.getPokemonList();
+    this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
     this.types = this.pokemonService.getPokemonTypelist();
   }
 
@@ -34,9 +35,8 @@ export class PokemonFormComponent {
   }
 
   onSubmit() {
-    console.log(`Submit form !`);
-    this.router.navigate(['/pokemon', this.pokemon.id]);
-
+    this.pokemonService.updatePokemon(this.pokemon)
+      .subscribe(() => this.router.navigate(['/pokemon', this.pokemon.id]));
   }
 
   isTypesValid(type: string): boolean {
