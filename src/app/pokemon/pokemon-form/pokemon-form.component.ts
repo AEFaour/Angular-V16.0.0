@@ -35,16 +35,16 @@ export class PokemonFormComponent {
 
   onSubmit() {
     console.log(`Submit form !`);
-    this.router.navigate(['/pokemo', this.pokemon.id]);
+    this.router.navigate(['/pokemon', this.pokemon.id]);
 
   }
 
   isTypesValid(type: string): boolean {
 
-    if(this.pokemon.types.length == 1 && this.hasType(type)){
+    if (this.pokemon.types.length == 1 && this.hasType(type)) {
       return false;
     }
-    if(this.pokemon.types.length > 2 && !this.hasType(type)) {
+    if (this.pokemon.types.length > 2 && !this.hasType(type)) {
       return false;
     }
     return true;
