@@ -52,6 +52,9 @@ export class PokemonService {
   }
 
   searchPokemonList(term: string): Observable<Array<Pokemon>> {
+    if(term.length <= 2) {
+      return of([]);
+    }
     return this.http.get<Array<Pokemon>>(`api/pokemons/?name=${term}`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, []))

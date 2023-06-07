@@ -11,6 +11,7 @@ import { PokemonFormComponent } from './pokemon-form/pokemon-form.component';
 import { EditPokemonFormComponent } from './edit-pokemon-form/edit-pokemon-form.component';
 import { AddPokemonComponent } from './add-pokemon/add-pokemon.component';
 import { SearchPokemonComponent } from './search-pokemon/search-pokemon.component';
+import { LoaderComponent } from './loader/loader.component';
 
 const pokemonRoutes: Routes = [
   {path: 'edit/pokemon/:id', component: EditPokemonFormComponent},
@@ -29,7 +30,8 @@ const pokemonRoutes: Routes = [
     PokemonFormComponent,
     EditPokemonFormComponent,
     AddPokemonComponent,
-    SearchPokemonComponent
+    SearchPokemonComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
