@@ -11,13 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class PokemonFormComponent {
   @Input() pokemon: Pokemon;
-  pokemonList: Array<Pokemon>;
+  //pokemonList: Array<Pokemon>;
   types: Array<string>;
-  constructor(private router: Router, private pokemonService: PokemonService) { }
+  isAddForm: boolean;
+  constructor(
+    private router: Router,
+    private pokemonService: PokemonService
+  ) { }
 
   ngOnInit() {
-    this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
+    // this.pokemonService.getPokemonList().subscribe(pokemonList => this.pokemonList = pokemonList);
     this.types = this.pokemonService.getPokemonTypelist();
+    this.isAddForm = this.router.url.includes('add');
   }
 
   hasType(type: string): boolean {
@@ -35,10 +40,15 @@ export class PokemonFormComponent {
   }
 
   onSubmit() {
-    this.pokemonService.updatePokemon(this.pokemon)
-      .subscribe(() => this.router.navigate(['/pokemon', this.pokemon.id]));
+    if (this.isAddForm) {
+      this.pokemonService.addPokemon(this.pokemon)
+        .subscribe((pokemon: Pokemon) => this.router.navigate(['/pokemon', pokemon.id]));
+    } else {
+      this.pokemonService.updatePokemon(this.pokemon)
+        .subscribe(() => this.router.navigate(['/pokemon', this.pokemon.id]));
+    }
   }
-
+  
   isTypesValid(type: string): boolean {
 
     if (this.pokemon.types.length == 1 && this.hasType(type)) {
