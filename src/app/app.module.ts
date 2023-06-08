@@ -8,6 +8,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PokemonModule } from './pokemon/pokemon.module';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 
 
@@ -15,18 +17,22 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation : false}),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     PokemonModule,
     AppRoutingModule
-    
+
   ],
-  providers: [InMemoryDataService],
+  providers: [
+    InMemoryDataService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

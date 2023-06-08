@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   templateUrl: './pokemon-form.component.html',
   styleUrls: ['./pokemon-form.component.css']
 })
-export class PokemonFormComponent {
+export class PokemonFormComponent implements OnInit {
   @Input() pokemon: Pokemon;
   //pokemonList: Array<Pokemon>;
   types: Array<string>;

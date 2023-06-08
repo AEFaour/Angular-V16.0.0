@@ -8,7 +8,7 @@ import { Observable, Subject, debounceTime, distinctUntilChanged, switchMap } fr
   selector: 'app-search-pokemon',
   templateUrl: './search-pokemon.component.html',
 })
-export class SearchPokemonComponent {
+export class SearchPokemonComponent implements OnInit {
   searchTerms = new Subject<string>();
   pokemons$: Observable<Array<Pokemon>>;
 
